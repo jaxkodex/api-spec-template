@@ -7,7 +7,12 @@
   "private": true,
   "scripts": {
     "start": "redocly preview-docs",
-    "build": "redocly bundle -o dist/bundle.yaml",
-    "test": "redocly lint"
+    "build": "redocly bundle openapi/openapi.yaml -o dist/openapi.json --ext json",
+    "test": "redocly lint",
+    "sdk:generate": "openapi-typescript"
+  },
+  "devDependencies": {
+    "openapi-typescript": "^7.13.0",
+    "typescript": "^5.9.3"
   }
 }

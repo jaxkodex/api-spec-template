@@ -30,13 +30,13 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn install --frozen-lockfile
 
       - name: Validate OpenAPI spec
-        run: npx openapi validate openapi/openapi.yaml
+        run: yarn test
 
       - name: Bundle spec to JSON
-        run: npx openapi bundle openapi/openapi.yaml --output dist/openapi.json --ext json
+        run: yarn build
 
       - name: Generate index.html
         run: |
@@ -44,7 +44,7 @@ jobs:
           <!DOCTYPE html>
           <html lang="en">
             <head>
-              <title>QRapid API Reference</title>
+              <title>API Reference</title>
               <meta charset="utf-8" />
               <meta name="viewport" content="width=device-width, initial-scale=1">
               <link rel="icon" type="image/png" href="https://redocly.github.io/redoc/favicon.png">
@@ -99,13 +99,13 @@ jobs:
           scope: '@libre-net-pe'
 
       - name: Install root dependencies
-        run: npm ci
+        run: yarn install --frozen-lockfile
 
       - name: Generate TypeScript types
-        run: npm run sdk:generate
+        run: yarn sdk:generate
 
       - name: Bump SDK version
-        run: npm version patch --no-git-tag-version
+        run: yarn version patch --no-git-tag-version
         working-directory: sdk
 
       - name: Commit and push version bump
@@ -117,13 +117,13 @@ jobs:
           git push origin HEAD:${{ github.ref_name }}
 
       - name: Install SDK dependencies
-        run: npm --prefix sdk ci
+        run: yarn --cwd sdk install --frozen-lockfile
 
       - name: Build SDK
-        run: npm --prefix sdk run build
+        run: yarn --cwd sdk build
 
       - name: Publish to GitHub Packages
-        run: npm publish
-        working-directory: sdk
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: yarn publish
+          working-directory: sdk
+          env:
+            NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

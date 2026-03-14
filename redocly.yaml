@@ -2,6 +2,8 @@
 apis:
   sample@v1: 
     root: openapi/openapi.yaml
+    x-openapi-ts:
+      output: sdk/src/schema.ts
 extends:
   - recommended
 rules:
