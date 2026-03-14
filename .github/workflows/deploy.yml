@@ -26,7 +26,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 24
 
       - name: Enable corepack
         run: corepack enable
@@ -95,7 +95,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 24
           registry-url: https://npm.pkg.github.com
           scope: '@libre-net-pe'
 
@@ -109,7 +109,7 @@ jobs:
         run: yarn sdk:generate
 
       - name: Bump SDK version
-        run: yarn version patch --no-git-tag-version
+        run: yarn version patch
         working-directory: sdk
 
       - name: Commit and push version bump
