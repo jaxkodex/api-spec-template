@@ -124,6 +124,6 @@ jobs:
 
       - name: Publish to GitHub Packages
         run: yarn publish
-          working-directory: sdk
-          env:
-            NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        working-directory: sdk
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
