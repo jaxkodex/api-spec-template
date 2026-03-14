@@ -29,6 +29,9 @@ jobs:
           node-version: 20
           cache: yarn
 
+      - name: Enable corepack
+        run: corepack enable
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
@@ -97,6 +100,9 @@ jobs:
           cache: yarn
           registry-url: https://npm.pkg.github.com
           scope: '@libre-net-pe'
+
+      - name: Enable corepack
+        run: corepack enable
 
       - name: Install root dependencies
         run: yarn install --frozen-lockfile
