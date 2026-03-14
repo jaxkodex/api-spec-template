@@ -27,7 +27,6 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 20
-          cache: yarn
 
       - name: Enable corepack
         run: corepack enable
@@ -97,7 +96,6 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 20
-          cache: yarn
           registry-url: https://npm.pkg.github.com
           scope: '@libre-net-pe'
 
