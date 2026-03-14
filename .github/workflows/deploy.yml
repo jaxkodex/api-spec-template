@@ -127,7 +127,7 @@ jobs:
         run: yarn --cwd sdk build
 
       - name: Publish to GitHub Packages
-        run: yarn publish
+        run: yarn npm publish
         working-directory: sdk
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
